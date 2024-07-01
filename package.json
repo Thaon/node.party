@@ -1,11 +1,10 @@
 {
-  "name": "p5.party",
+  "name": "node.party",
   "version": "0.13.3",
   "author": "Justin Bakse",
   "license": "MIT",
   "description": "Pre-release! An easy to use library for simple multi-user sketches with p5.js.",
   "keywords": [
-    "p5",
     "multiuser",
     "multiplayer",
     "library"
@@ -17,8 +16,8 @@
     "src",
     "dist"
   ],
-  "main": "dist/p5.party.js",
-  "types": "dist/p5.party.d.ts",
+  "type": "module",
+  "main": "dist/node.party.js",
   "engines": {
     "node": "21.2.0"
   },
@@ -26,46 +25,21 @@
     "type": "git",
     "url": "https://github.com/jbakse/deepstream_test.git"
   },
-  "scripts": {
-    "start": "npm run esbuild -- --outfile=public/dist/p5.party.js --watch",
-    "test": "jest --coverage",
-    "release": "np",
-    "serve": "PORT=${PORT:-6020} deepstream start",
-    "netlify": "npm run esbuild -- --outfile=public/dist/p5.party.js",
-    "-------------": "--",
-    "prestart": "npm run genversion",
-    "!posttest": "istanbul-badges-readme",
-    "prenetlify": "npm run genversion",
-    "prebuild": "npm run genversion",
-    "build": "npm run esbuild -- --outfile=dist/p5.party.js",
-    "prerelease": "npm run build",
-    "prepublishOnly": "npm run build",
-    "postpublish": "curl https://purge.jsdelivr.net/npm/p5.party@latest/dist/p5.party.js",
-    "genversion": "genversion --es6 --semi version.js",
-    "esbuild": "esbuild src/p5.party.ts --bundle --sourcemap --minify --target=es6 --define:global=window --inject:esbuild.inject.js"
-  },
   "dependencies": {
     "@deepstream/client": "^5.2.6",
     "@deepstream/server": "^5.2.6",
     "ts-dedent": "^2.2.0"
   },
   "devDependencies": {
-    "@types/jest": "^29.5.12",
-    "@types/reefjs": "^7.6.1",
-    "@typescript-eslint/eslint-plugin": "^7.3.1",
-    "@typescript-eslint/parser": "^7.3.1",
     "buffer": "^6.0.3",
     "esbuild": "^0.20.2",
     "eslint": "^8.16.0",
-    "eslint-config-p5js": "^1.1.0",
     "genversion": "^3.0.2",
     "istanbul-badges-readme": "^1.8.1",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "np": "^10.0.1",
     "on-change": "^5.0.0",
-    "reefjs": "^13.0.2",
-    "ts-jest": "^29.1.2",
-    "typescript": "^5.4.2"
+    "reefjs": "^13.0.2"
   }
 }

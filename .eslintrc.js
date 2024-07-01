@@ -3,7 +3,6 @@ module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
   plugins: ["@typescript-eslint"],
-  extends: ["eslint:recommended", "p5js"],
 
   overrides: [
     {
@@ -13,7 +12,6 @@ module.exports = {
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking",
         "plugin:@typescript-eslint/strict",
-        "p5js",
       ],
       parserOptions: {
         project: ["./tsconfig.json"], // Specify it only for TypeScript files
