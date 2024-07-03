@@ -3,8 +3,6 @@ node_modules
 
 # build files
 dist
-p5.party.zip
-version.js
 
 # build meta files
 stats.json
@@ -13,9 +11,3 @@ meta.json
 # system files
 .DS_Store
 Icon[\r]
-
-# jest test files
-coverage
-
-# production files are often too big for github
-production

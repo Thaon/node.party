@@ -18,7 +18,7 @@ export class Room {
   #guestNames; // names of guests in the room
   #hostName; // name of designated host
 
-  constructor(host, appName, roomName) {
+  constructor(host, appName, roomName, onGuestsChange, onOthersUpdate) {
     this.#ds = new DeepstreamClient(host);
     this.#appName = appName;
     this.#roomName = roomName;
@@ -31,6 +31,8 @@ export class Room {
     this.#guestNames = [];
     this.#hostName = undefined;
     this.#whenConnected = this.#connect();
+    this.onGuestsChange = onGuestsChange;
+    this.onOthersUpdate = onOthersUpdate;
   }
 
   #connect() {
@@ -132,6 +134,10 @@ export class Room {
     });
   }
 
+  get guests() {
+    return this.#guestNames;
+  }
+
   isHost() {
     return this.#hostName === this.#guestName;
   }
@@ -164,6 +170,9 @@ export class Room {
 
     // update guest shareds
     this.#updateGuestShareds();
+
+    // notify caller
+    if (this.onGuestsChange) this.onGuestsChange(this.#guestNames);
   }
 
   #updateGuestShareds() {
@@ -171,6 +180,12 @@ export class Room {
       this.#publishedGuestShareds.length = 0;
       const nonemptyShareds = this.#guestShareds.filter((s) => !isEmpty(s));
       this.#publishedGuestShareds.push(...nonemptyShareds);
+      if (this.onOthersUpdate)
+        this.onOthersUpdate([
+          ...this.#publishedGuestShareds.filter(
+            (s) => s !== this.#myGuestRecord.shared
+          ),
+        ]);
     };
 
     // add any missing records to guestRecords, start loading them

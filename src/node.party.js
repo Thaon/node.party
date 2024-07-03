@@ -2,37 +2,27 @@ import * as log from "./log.js";
 import { Room } from "./Room.js";
 import { Record } from "./Record.js";
 
-const version = "0.1";
-
 class NodeParty {
-  constructor() {
-    log.styled("font-weight: bold", `node.party v${version}`);
+  constructor(autoReload = false) {
+    this.auto = autoReload;
+    this.room = null;
   }
 
-  auto = false; // sessionStorage.getItem("auto") === "true";
-  room = null;
-
-  connect = async (host, appName, roomName = "_main", cb = null) => {
+  connect = async (
+    host,
+    appName,
+    roomName = "_main",
+    cb = null,
+    guestsCb = null
+  ) => {
     if (this.room !== null) {
       log.warn("You should call connect() only one time");
       return;
     }
     const load = async () => {
-      this.room = new Room(host, appName, roomName);
+      this.room = new Room(host, appName, roomName, guestsCb);
       await this.room.whenConnected;
-      // WHAT DO?
-      // window.addEventListener("beforeunload", () => {
-      //   this.room?.disconnect();
-      // });
 
-      // Auto reloading
-      // When iterating, it is usually best to have all connected clients reload
-      // when the code changes. This can be set up on local dev easily, but
-      // the p5 web editor doesn't support this.
-      // The auto setting, which can be manually enabled from the info panel tells p5 party to automatically reload all other guests in the room when the "auto" guest is reloaded.
-      // Reloading happens immediately after the auto guest connects, making the auto guest the host before setup() is called.
-
-      // const auto = sessionStorage.getItem("auto") === "true";
       log.log("Auto:", this.auto);
       if (this.auto) {
         log.log("Auto enabled. Reloading others...");
@@ -102,6 +92,14 @@ class NodeParty {
     await load();
   };
 
+  disconnect = () => {
+    if (this.room === null) {
+      log.error("disconnect() called before connect()");
+      return;
+    }
+    this.room.disconnect();
+  };
+
   loadShared = async (name, initObject, cb = null) => {
     if (this.room === null) {
       log.error("loadShared() called before connect()");
@@ -145,11 +143,20 @@ class NodeParty {
     return record.shared;
   };
 
-  loadOthers = () => {
+  getInfo = () => {
+    if (this.room === null) {
+      log.error("getUsers() called before connect()");
+      return undefined;
+    }
+    return this.room.info();
+  };
+
+  loadOthers = (cb = null) => {
     if (this.room === null) {
       log.error("loadOthers() called before connect()");
       return undefined;
     }
+    this.room.onOthersUpdate = cb;
     return this.room.guestShareds;
   };
 
@@ -183,7 +190,6 @@ class NodeParty {
     Record.recordForShared(shared)?.watchShared(a, b, c);
   };
 
-  // ! sub
   sub = (event, cb) => {
     if (this.room === null) {
       log.error("sub() called before connect()");
@@ -192,7 +198,6 @@ class NodeParty {
     this.room.subscribe(event, cb);
   };
 
-  // ! unsub
   unsub = (event, cb = null) => {
     if (this.room === null) {
       log.error("unsub() called before connect()");
@@ -201,7 +206,6 @@ class NodeParty {
     this.room.unsubscribe(event, cb);
   };
 
-  // ! emit
   emit = (event, data) => {
     if (this.room === null) {
       log.error("emit() called before connect()");

@@ -1,9 +1,10 @@
 {
   "name": "node.party",
-  "version": "0.13.3",
-  "author": "Justin Bakse",
+  "version": "1.0.0",
+  "author": "Gabriele Maddaloni",
   "license": "MIT",
-  "description": "Pre-release! An easy to use library for simple multi-user sketches with p5.js.",
+  "description": "An easy to use library for simple multi-user node apps.",
+  "package-name": "node.party",
   "keywords": [
     "multiuser",
     "multiplayer",
@@ -16,18 +17,18 @@
     "src",
     "dist"
   ],
-  "type": "module",
-  "main": "dist/node.party.js",
+  "entry-point": "src/node.party.js",
+  "main": "src/node.party.js",
   "engines": {
     "node": "21.2.0"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jbakse/deepstream_test.git"
+    "url": "https://github.com/thaon/node.party.git"
   },
   "dependencies": {
     "@deepstream/client": "^5.2.6",
-    "@deepstream/server": "^5.2.6",
+    "jotai": "^2.8.4",
     "ts-dedent": "^2.2.0"
   },
   "devDependencies": {
@@ -36,9 +37,6 @@
     "eslint": "^8.16.0",
     "genversion": "^3.0.2",
     "istanbul-badges-readme": "^1.8.1",
-    "jest": "^29.7.0",
-    "jest-environment-jsdom": "^29.7.0",
-    "np": "^10.0.1",
     "on-change": "^5.0.0",
     "reefjs": "^13.0.2"
   }

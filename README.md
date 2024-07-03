@@ -3,14 +3,14 @@
 ![p5.party logo](assets/p5_party_logo.png)
 
 <!-- ![Netlify](https://img.shields.io/netlify/8ab7413c-e95d-42b8-8988-5d930954a3f1) -->
-<!-- ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/jbakse/p5.party) -->
-<!-- ![GitHub contributors](https://img.shields.io/github/contributors/jbakse/p5.party) -->
-<!-- ![GitHub all releases](https://img.shields.io/github/downloads/jbakse/p5.party/total) -->
+<!-- ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/thaon/node.party) -->
+<!-- ![GitHub contributors](https://img.shields.io/github/contributors/thaon/node.party) -->
+<!-- ![GitHub all releases](https://img.shields.io/github/downloads/thaon/node.party/total) -->
 
 ![NPM](https://img.shields.io/npm/l/p5.party)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/jbakse/p5.party)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/thaon/node.party)
 
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/jbakse/p5.party)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/thaon/node.party)
 ![jsDelivr hits (npm)](https://img.shields.io/jsdelivr/npm/hy/p5.party)
 [![Website](https://img.shields.io/website?down_message=offline&label=documentation&up_message=online&url=https%3A%2F%2Fwww.notion.so%2Fp5-party-Documentation-887564cad8ec455e9bee994362322f2e)](https://www.notion.so/p5-party-Documentation-887564cad8ec455e9bee994362322f2e)
 [![Website](https://img.shields.io/website?down_message=offline&label=examples&up_message=online&url=https%3A%2F%2Fp5party.netlify.app%2F)](http://p5party.netlify.app)
@@ -34,7 +34,7 @@ p5.party is a library for easily prototyping online multi-user sketches with p5.
 
 [Demos + Examples](https://p5party.org/examples)
 
-[Discussion](https://github.com/jbakse/p5.party/discussions)
+[Discussion](https://github.com/thaon/node.party/discussions)
 
 ## What is it good for?
 
@@ -125,7 +125,7 @@ function draw() {
 
 ## Installation and Quickstart
 
-The quickest way to get started with p5.party is to load it from a [CDN](https://cdn.jsdelivr.net/npm/p5.party@latest/dist/p5.party.js) or download the latest [release](https://github.com/jbakse/p5.party/releases) .
+The quickest way to get started with p5.party is to load it from a [CDN](https://cdn.jsdelivr.net/npm/p5.party@latest/dist/p5.party.js) or download the latest [release](https://github.com/thaon/node.party/releases) .
 
 Visit the [P5 Web Editor Quick Start Guide](https://www.notion.so/P5-js-Web-Editor-Quick-Start-Guide-5cc4a197886a4bda89573f5879e47c78) or [VS Code Quick Start Guide](https://www.notion.so/Hello-p5-party-c4c0f94127c1408e9d6dd51f91ac8414) to get started!
 
@@ -137,7 +137,7 @@ You can set up a server in a few minutes using Heroku and a clone of the p5.part
 
 ## Contributing
 
-We welcome new contibuters. Please feel free to start a [discusion](https://github.com/jbakse/p5.party/discussions), [post issues](https://github.com/jbakse/p5.party/issues), or [request features](https://github.com/jbakse/p5.party/issues). If you want to help with writing code or documentation, you can start by indicating your interest on an open issue or by creating your own.
+We welcome new contibuters. Please feel free to start a [discusion](https://github.com/thaon/node.party/discussions), [post issues](https://github.com/thaon/node.party/issues), or [request features](https://github.com/thaon/node.party/issues). If you want to help with writing code or documentation, you can start by indicating your interest on an open issue or by creating your own.
 
 ## License
 
